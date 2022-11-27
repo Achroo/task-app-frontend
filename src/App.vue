@@ -1,12 +1,16 @@
 <template>
     <HomeView @logout="logout" v-if="store.loggedIn && store.currentView == 'home'"/>
-    <LoginView @login="login" v-else/>
+    <LoginView @login="login" v-if="!store.loggedIn || store.currentView == 'login'"/>
+    <ProfileView v-if="store.currentView == 'profile'" @logout="logout"/>
+    <SettingsView v-if="store.currentView == 'settings'" @logout="logout"/>
 </template>
 
 <script>
 
 import HomeView from './views/HomeView.vue'
 import LoginView from './views/LoginView.vue'
+import ProfileView from './views/ProfileView.vue'
+import SettingsView from './views/SettingsView.vue'
 
 import { store } from './store.js'
 
@@ -24,6 +28,8 @@ export default {
   components: {
     HomeView: HomeView,
     LoginView: LoginView,
+    ProfileView: ProfileView,
+    SettingsView: SettingsView
   },
   data() {
     return {
@@ -35,6 +41,7 @@ export default {
     if (user != "undefined" && user != null && user != "null") {
       store.user = JSON.parse(user)
       store.loggedIn = true
+      store.currentView = 'home'
     } else {
       store.loggedIn = false
     }
@@ -53,6 +60,7 @@ export default {
       store.currentView = 'home'
     },
     logout() {
+      store.tasks = []
       store.user = null
       store.loggedIn = false
       localStorage.removeItem('user')
@@ -63,18 +71,31 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 body, html {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
 }
+</style>
+
+<style scoped>
+  :global(.mainColor) {
+    background-color: #ffffff;
+    color: #3498db
+  }
+
+  :global(.secondaryColor) {
+    background-color: #2f2fa2;
+    color: #3498db
+  }
+
+  :global(.accentColor) {
+    background-color: #553d67;
+    color: #3498db
+  }
 </style>

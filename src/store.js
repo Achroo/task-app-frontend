@@ -4,5 +4,7 @@ export const store = reactive({
     tasks: [],
     user: {},
     loggedIn: false,
-    currentView: "login"
+    currentView: "login",
+    currentPopup: null,
+    currentTask: null,
 })
