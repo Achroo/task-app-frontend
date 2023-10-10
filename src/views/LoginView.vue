@@ -43,7 +43,7 @@
         methods: {
             login(e) {
                 e.preventDefault()
-                fetch('http://37.187.134.126:3000/user/getUser', {
+                fetch('http://127.0.0.1:3000/user/getUser', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -64,7 +64,7 @@
             },
             signup(e) {
                 e.preventDefault()
-                fetch('http://37.187.134.126:3000/user/createUser', {
+                fetch('http://127.0.0.1:3000/user/createUser', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

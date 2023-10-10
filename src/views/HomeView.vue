@@ -83,7 +83,7 @@ export default {
             this.$emit('logout')
         },
         deleteTask(task) {
-            fetch('http://37.187.134.126:3000/task/removeTask', {
+            fetch('http://127.0.0.1:3000/task/removeTask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ export default {
             })
         },
         fetchTasks() {
-            fetch('http://37.187.134.126:3000/task/getTasks', {
+            fetch('http://127.0.0.1:3000/task/getTasks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -138,7 +138,7 @@ export default {
         submitCreateTask(e) {
             e.preventDefault();
 
-            fetch('http://37.187.134.126:3000/task/createTask', {
+            fetch('http://127.0.0.1:3000/task/createTask', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -170,7 +170,7 @@ export default {
         submitEdit(e) {
             e.preventDefault();
 
-            fetch('http://37.187.134.126:3000/task/editTask', {
+            fetch('http://127.0.0.1:3000/task/editTask', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -202,7 +202,7 @@ export default {
             this.enableScroll()
         },
         setTaskCompleted(task, completed) {
-            fetch('http://37.187.134.126:3000/task/setCompleted', {
+            fetch('http://127.0.0.1:3000/task/setCompleted', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
